@@ -21,6 +21,10 @@ interface CodeEditorProps {
   background?: string;
   currentPadding?: string;
 }
+interface NumberSize {
+  width: number;
+  height: number;
+}
 
 function CodeEditor({
   language,
@@ -49,8 +53,13 @@ function CodeEditor({
     setTitle(newTitle);
   };
 
-  const handleResize = (evt, direction, ref, pos) => {
-    const newHeight = ref.style.height;
+  const handleResize = (
+    event: MouseEvent | TouchEvent,
+    direction: string,
+    ref: HTMLElement,
+    pos: NumberSize
+  ) => {
+    const newHeight = (ref as HTMLDivElement).style.height;
     setHeight(parseInt(newHeight, 10));
   };
 
